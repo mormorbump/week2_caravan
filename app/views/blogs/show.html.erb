@@ -1,6 +1,6 @@
 <header>
     <h1 class="headline">
-      <a href="#">CARAVAN</a>
+      <%= link_to "CARAVAN", blogs_path %>
     </h1>
     <div class="social">
       <i class="fa fa-facebook-square"></i>
@@ -20,52 +20,55 @@
   </nav>
 
   <div class="main-visual">
-    <div class="main-visual-content">
-      <p class="main-visual-text">
-        The world is a book<br>
-        and those who do not travel<br>
-        read only one page.
-      </p>
-      <p class="main-visual-name">
-        St. Augustine
-      </p>
+      <div class="main-visual-content">
+        <p class="main-visual-text">
+          The world is a book<br>
+          and those who do not travel<br>
+          read only one page.
+        </p>
+        <p class="main-visual-name">
+          St. Augustine
+        </p>
+      </div>
     </div>
-  </div>
 
   <main class="clearfix">
-    <section class="blog">
-      <h2 class="blog-headline">Recent Blogs</h2>
-      <div class="blog-box">
-
-        <!-- 第三回でここから書き換える -->
-        <% @blogs.each do |blog| %>
-        <div class="blog-item clearfix">
-          <%= image_tag "img/forest.jpg", class:"blog-image" %>
-          <!-- html.erbファイル内では、<%#= %>で囲むとその中でrubyの文を実行できる。 -->
-          <section class="blog-text">
-            <h3 class="blog-text-headline">
-              <%= link_to(blog.title, "/blogs/#{blog.id}") %><!-- タイトル表示 -->
-              <!-- <a href=""></a>のrails版がlink_to -->
+    <section class="single-blog">
+      <h2 class="blog-headline">Blog</h2>
+      <section class="blog-box">
+            <h3 class="blog-box-headline">
+              <%= @blog.title %><!-- タイトルを表示 -->
             </h3>
-            <p class="blog-date">June 19, 2017</p>
-            <span class="category">
-              <%= blog.category %><!-- カテゴリー表示 -->
-            </span>
-          </section>
-        </div>
-        <% end %>
-        <!-- ここまで -->
-      </div>
-      <div class="pagination">
-        <p><<</p>
-        <p><</p>
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>></p>
-        <p>>></p>
-      </div>
-    </section>
+
+            <div class="blog-box-content">
+              <p class="category">
+              <%= @blog.category %><!-- カテゴリー表示 -->
+              </p>
+              <p class="blog-date">
+                June 19, 2017
+          </p>
+            </div>
+
+              <div class="single_image"></div>
+              <p class="single_text">
+                <%= @blog.body %>
+<!-- 本文を表示。 -->
+              </p>
+
+          <a href="#">編集</a>
+          <a href="#">削除</a>
+
+          <div class="author_case clearfix">
+            <div class="author_image"></div>
+              <div class="author_box">
+                <p class="author_name">By JOHN SMITH / Photographer</p>
+                <p class="author-text">His black and white landscapes, often captured at times<br>of the day and night when the light is fleeting, or in poor<br>weather conditions, such as rain, fog, or snow, are<br>reminiscent of the calm in a storm all with an ethereal<br>quality.
+                </p>
+              </div>
+            </div>
+        </section>
+      </section>
+
     <div class="sidebar">
       <section class="popular">
         <h2 class="sidebar-headline">Popular</h2>
@@ -102,7 +105,6 @@
       </section>
     </div>
   </main>
-
   <footer>
     <p class="footer-text">© All rights recerved by Infratop.Inc.</p>
   </footer>
